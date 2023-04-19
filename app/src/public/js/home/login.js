@@ -6,8 +6,7 @@ const id_input = document.getElementById("id"),
 
 submit_btn.addEventListener("click", login);
 
-function login(e) {
-  e.preventDefault();
+function login() {
   const req = {
     id: id.value,
     password: password_input.value,
