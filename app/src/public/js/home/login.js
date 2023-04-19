@@ -20,10 +20,15 @@ function login(e) {
     },
     body: JSON.stringify(req),
   })
+    .then((res) => res.json())
     .then((res) => {
-      return res.json();
+      if (res.success) {
+        location.href = "/";
+      } else {
+        alert(res.msg);
+      }
     })
-    .then((res) => {
-      console.log(res);
+    .catch((err) => {
+      console.error("로그인 중 에러 발생");
     });
 }
