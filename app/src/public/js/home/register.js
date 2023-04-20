@@ -8,15 +8,18 @@ const id_input = document.getElementById("id"),
 
 submit_btn.addEventListener("click", register);
 
-function register(e) {
-  e.preventDefault();
+function register() {
   const req = {
     id: id.value,
     name: name.value,
     psword: password_input.value,
-    confirmPassword: confirmPassword.value,
   };
-  console.log(req);
+  if (req.psword !== confirmPassword.value) {
+    return alert("비밀번호 불일치!");
+  }
+  if (!id.value) {
+    return alert("아이디를 입력해주세요.");
+  }
   fetch("/register", {
     method: "POST",
     headers: {
